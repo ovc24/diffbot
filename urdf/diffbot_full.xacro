@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="diffbot" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find diffbot)/urdf/diffbot_full_gazebo.xacro" />
+  
+  <link name="base_footprint" />
+
+  <joint name="base_link__base_footprint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.003" rpy="0 0 0"/>
+  </joint>
+  <link
+    name="base_link">
+    <origin xyz="0.014418 -4.7884E-05 -0.042393" rpy="0 0 0" />
+    <inertial>
+      <mass
+        value="31.367" />
+      <inertia
+        ixx="0.57277"
+        ixy="0.00034867"
+        ixz="0.017425"
+        iyy="1.8106"
+        iyz="-0.00010154"
+        izz="2.3392" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="linkleft">
+    <origin xyz="-1.3878E-17 -0.01473 3.4694E-18" rpy="0 0 0" />
+    <inertial>
+      <origin xyz="-1.3878E-17 -0.01473 3.4694E-18"/>
+      <mass
+        value="1.0462" />
+      <inertia
+        ixx="0.0034984"
+        ixy="-1.0646E-19"
+        ixz="-2.2445E-19"
+        iyy="0.006578"
+        iyz="-1.54E-20"
+        izz="0.0034984" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/linkleft.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/linkleft.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="jointleft"
+    type="continuous">
+    <origin
+      xyz="-0.13287 0.27 -0.04"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="linkleft" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link
+    name="linkright">
+    <origin xyz="1.3878E-17 0.01473 3.4694E-18" rpy="0 0 0" />
+    <inertial>
+      <mass
+        value="1.0462" />
+      <inertia
+        ixx="0.0034984"
+        ixy="-1.0329E-19"
+        ixz="3.236E-35"
+        iyy="0.006578"
+        iyz="-2.1654E-36"
+        izz="0.0034984" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/linkright.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh
+          filename="package://diffbot/meshes/linkright.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="jointright"
+    type="continuous">
+    <origin
+      xyz="-0.13287 -0.27 -0.04"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="linkright" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+</robot>

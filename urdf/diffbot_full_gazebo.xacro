@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<robot name="diffbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Begin - Gazebo definition -->
+
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="linkright">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="linkleft">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+      <alwaysOn>true</alwaysOn>
+      <updateRate>50</updateRate>
+      <leftJoint>jointleft</leftJoint>
+      <rightJoint>jointright</rightJoint>
+      <wheelSeparation>0.54</wheelSeparation>
+      <wheelDiameter>0.08</wheelDiameter>
+      <wheelAcceleration>0.1</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometrySource>world</odometrySource>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishTF>true</publishTF>
+      <publishOdomTF>true</publishOdomTF>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+      <rosDebugLevel>na</rosDebugLevel>
+
+    </plugin>
+  </gazebo>
+  <!-- End - Gazebo plugins -->
+
+</robot>

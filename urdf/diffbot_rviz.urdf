@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="diffbot">
+  <link name="base_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <mesh filename="package://diffbot/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+
+  <link name="linkleft">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <mesh filename="package://diffbot/meshes/linkleft.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="jointleft" type="continuous">
+    <parent link="base_link" />
+    <child link="linkleft" />
+    <origin xyz="-0.13287 0.27 -0.04" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+  </joint>
+
+  <link name="linkright">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <mesh filename="package://diffbot/meshes/linkright.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="jointright" type="continuous">
+    <parent link="base_link" />
+    <child link="linkright" />
+    <origin xyz="-0.13287 -0.27 -0.04" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+  </joint>
+
+</robot>
