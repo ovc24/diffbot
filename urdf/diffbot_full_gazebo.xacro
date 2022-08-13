@@ -14,7 +14,7 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>1.0</maxVel>
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -25,8 +25,18 @@
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>1.0</maxVel>
     <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="fcastor_wheel">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
@@ -37,8 +47,8 @@
       <updateRate>50</updateRate>
       <leftJoint>jointleft</leftJoint>
       <rightJoint>jointright</rightJoint>
-      <wheelSeparation>0.54</wheelSeparation>
-      <wheelDiameter>0.08</wheelDiameter>
+      <wheelSeparation>0.34</wheelSeparation>
+      <wheelDiameter>0.18</wheelDiameter>
       <wheelAcceleration>0.1</wheelAcceleration>
       <wheelTorque>10</wheelTorque>
       <commandTopic>cmd_vel</commandTopic>
