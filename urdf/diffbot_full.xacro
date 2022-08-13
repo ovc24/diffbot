@@ -17,17 +17,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="0.0012511 0 -0.02"
+        xyz="0 0 -0.02"
         rpy="0 0 0" />
       <mass
-        value="7.5332" />
+        value="7.53318560862312" />
       <inertia
-        ixx="0.052212"
-        ixy="3.9485E-17"
-        ixz="9.6786E-19"
-        iyy="0.26506"
-        iyz="3.2771E-19"
-        izz="0.31524" />
+        ixx="0.0522120893856812"
+        ixy="3.93072586580907E-17"
+        ixz="9.63358805343892E-19"
+        iyy="0.266013927067481"
+        iyz="3.19552439912169E-19"
+        izz="0.316196746605281" />
     </inertial>
     <visual>
       <origin
@@ -40,7 +40,7 @@
       <material
         name="">
         <color
-          rgba="0.52941 0.54902 0.54902 1" />
+          rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
       </material>
     </visual>
     <collision>
@@ -57,17 +57,17 @@
     name="linkleft">
     <inertial>
       <origin
-        xyz="-1.3878E-17 -0.011048 0"
+        xyz="0 -0.0110479041916167 -6.93889390390723E-18"
         rpy="0 0 0" />
       <mass
-        value="0.52465" />
+        value="0.524645973149496" />
       <inertia
-        ixx="0.0010699"
-        ixy="2.059E-19"
-        ixz="-1.6414E-19"
-        iyy="0.002062"
-        iyz="9.9564E-21"
-        izz="0.0010699" />
+        ixx="0.00106989540135268"
+        ixy="1.70980652360271E-19"
+        ixz="-3.55148617365289E-19"
+        iyy="0.00206198433818366"
+        iyz="8.4191566505545E-21"
+        izz="0.00106989540135268" />
     </inertial>
     <visual>
       <origin
@@ -80,7 +80,7 @@
       <material
         name="">
         <color
-          rgba="0.29804 0.29804 0.29804 1" />
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
     <collision>
@@ -97,7 +97,7 @@
     name="jointleft"
     type="continuous">
     <origin
-      xyz="-0.1 0.17 -0.02"
+      xyz="0 0.17 -0.02"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -105,23 +105,25 @@
       link="linkleft" />
     <axis
       xyz="0 -1 0" />
-
+    <limit
+      effort="1"
+      velocity="1" />
   </joint>
   <link
     name="linkright">
     <inertial>
       <origin
-        xyz="1.3878E-17 0.011048 0"
+        xyz="0 0.0110479041916167 0"
         rpy="0 0 0" />
       <mass
-        value="0.52465" />
+        value="0.524645973149496" />
       <inertia
-        ixx="0.0010699"
-        ixy="1.4008E-19"
-        ixz="1.0434E-35"
-        iyy="0.002062"
-        iyz="5.8775E-36"
-        izz="0.0010699" />
+        ixx="0.00106989540135268"
+        ixy="1.40080394602118E-19"
+        ixz="1.07540887217111E-35"
+        iyy="0.00206198433818366"
+        iyz="-5.87747175411144E-36"
+        izz="0.00106989540135268" />
     </inertial>
     <visual>
       <origin
@@ -134,7 +136,7 @@
       <material
         name="">
         <color
-          rgba="0.29804 0.29804 0.29804 1" />
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
     <collision>
@@ -151,7 +153,7 @@
     name="jointright"
     type="continuous">
     <origin
-      xyz="-0.1 -0.17 -0.02"
+      xyz="0 -0.17 -0.02"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -159,6 +161,9 @@
       link="linkright" />
     <axis
       xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
   </joint>
 
   <link name="fcastor_wheel">
@@ -189,5 +194,35 @@
     <parent link="base_link"/>
     <child link="fcastor_wheel"/>
     <origin xyz="0.2 0 -0.070" rpy="0 0 0"/>
+  </joint>
+
+  <link name="bcastor_wheel">
+    <origin rpy="0 0 0" xyz="0.00 0 0.00"/>
+    <visual>
+      <geometry>
+        <sphere radius="0.035"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.035"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="0.002" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+  </link>
+  
+  <joint name="base_link__bcastor_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="bcastor_wheel"/>
+    <origin xyz="-0.2 0 -0.070" rpy="0 0 0"/>
   </joint>
 </robot>
